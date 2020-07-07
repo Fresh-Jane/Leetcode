@@ -33,6 +33,7 @@ Note:
 1 <= N <= 1000
 ```
 ```
+// Time: O(n^2), Space: O(N)
 class Solution 1 {
 public:
     bool divisorGame(int N) {
@@ -50,6 +51,7 @@ public:
     }
 };
 
+// Time: O(1), Space: O(1)
 class Solution 2 {
 public:
     bool divisorGame(int N) {
