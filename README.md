@@ -1,1 +1,1 @@
-Record the solutions for leetcode problems.
+Record my solutions of leetcode problems.
