@@ -1,4 +1,4 @@
-### 1130. Minimum Cost Tree From Leaf Values (M)
+### 1130. Minimum Cost Tree From Leaf Values (Medium)
 
 Given an array ```arr``` of positive integers, consider all binary trees such that:
 
