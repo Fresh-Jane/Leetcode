@@ -1,4 +1,4 @@
-### 1025. Divisor Game
+### 1025. Divisor Game (Easy)
 
 Alice and Bob take turns playing a game, with Alice starting first.
 

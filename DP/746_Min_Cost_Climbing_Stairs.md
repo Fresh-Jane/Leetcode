@@ -1,4 +1,4 @@
-### 746. Min Cost Climbing Stairs
+### 746. Min Cost Climbing Stairs (Easy)
 
 On a staircase, the i-th step has some non-negative cost cost[i] assigned (0 indexed).
 
@@ -27,6 +27,7 @@ cost will have a length in the range [2, 1000].
 Every cost[i] will be an integer in the range [0, 999].
 ```
 ```
+// Time: O(n), Space: O(n)
 class Solution {
 public:
     int minCostClimbingStairs(vector<int>& cost) {

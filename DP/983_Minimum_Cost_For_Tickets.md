@@ -1,4 +1,4 @@
-### 983. Minimum Cost For Tickets
+### 983. Minimum Cost For Tickets (Medium)
 
 In a country popular for train travel, you have planned some train travelling one year in advance.  The days of the year that you will travel is given as an array ```days```.  Each day is an integer from ```1``` to ```365```.
 
@@ -49,6 +49,7 @@ costs.length == 3
 ```
 https://leetcode.com/problems/minimum-cost-for-tickets/discuss/226659/Two-DP-solutions-with-pictures
 
+// Time: O(n), Space: O(1)
 class Solution 1 {
 public:
     int mincostTickets(vector<int>& days, vector<int>& costs) {
@@ -67,6 +68,7 @@ public:
     }
 };
 
+// Time: O(n), Space: O(1)
 class Solution 2 {
 public:
     int mincostTickets(vector<int>& days, vector<int>& costs) {

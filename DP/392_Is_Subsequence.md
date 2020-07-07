@@ -1,4 +1,4 @@
-### 392. Is Subsequence
+### 392. Is Subsequence (Easy)
 
 Given a string s and a string t, check if s is subsequence of t.
 
@@ -35,6 +35,8 @@ Constraints:
 Both strings consists only of lowercase characters.
 ```
 ```
+// Two pointer
+// Time: O(N), Space: O(1), N=t.size()
 class Solution 1 {
 public:
     bool isSubsequence(string s, string t) {
@@ -51,6 +53,8 @@ public:
     }
 };
 
+// Follow up
+// If the length of s is smaller than t and there are a large amount of s, this solution is better.
 class Solution 2 {
 public:
     int findNext(vector<int> seq, int k) {

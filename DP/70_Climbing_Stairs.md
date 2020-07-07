@@ -1,4 +1,4 @@
-### 70. Climbing Stairs
+### 70. Climbing Stairs (Easy)
 
 You are climbing a stair case. It takes n steps to reach to the top.
 
@@ -31,6 +31,7 @@ Constraints:
 1 <= n <= 45
 ```
 ```
+// Time: O(n), Space: O(1)
 class Solution {
 public:
     int climbStairs(int n) {
