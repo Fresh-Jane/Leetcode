@@ -1,4 +1,4 @@
-257. Binary Tree Paths (Easy)
+### 257. Binary Tree Paths (Easy)
 
 Given a binary tree, return all root-to-leaf paths.
 

@@ -1,4 +1,4 @@
-394. Decode String (Medium)
+### 394. Decode String (Medium)
 
 Given an encoded string, return its decoded string.
 
