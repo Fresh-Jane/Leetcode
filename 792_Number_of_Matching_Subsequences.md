@@ -19,7 +19,10 @@ Note:
 - The length of words[i] will be in the range of [1, 50].
 
 ```
+// If length S is N, size of words vector is M, the average length of word is k.
+
 // Binary search
+// Time: O(Mklog(N))
 class Solution 1 {
 public:
     int numMatchingSubseq(string S, vector<string>& words) {
@@ -41,8 +44,24 @@ public:
     }
 };
 
-// TLE
+// Just one pass for the S and we have a waiting list to record the words' waiting letter and their progress.
+// Time: O(MN/26)
 class Solution 2 {
+public:
+    int numMatchingSubseq(string S, vector<string>& words) {
+        vector<const char*> waiting[128];
+        for (auto& w : words) waiting[w[0]].push_back(w.c_str());
+        for (const char s : S) {
+            auto advance = waiting[s];
+            waiting[s].clear();
+            for (auto it : advance) waiting[*++it].push_back(it);
+        }
+        return waiting[0].size(); // AscII number for NULL is 0.
+    }
+};
+
+// Time: O(MN)
+class Solution 3 {
 public:
     bool isSubseq(string S, string w) {
         int iter_s = 0, iter_w = 0;
