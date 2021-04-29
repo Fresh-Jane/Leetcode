@@ -43,23 +43,23 @@ Constraints:
 class Solution {
 public:
     int minimumEffortPath(vector<vector<int>>& heights) {
-        const vector<vector<int>> go = {{0, 1}, {0, -1}, {1, 0}, {-1, 0}};
+        constexpr int go[4][2] = {{0, -1}, {0, 1}, {1, 0}, {-1, 0}};
         const int m = heights.size(), n = heights[0].size();
-        vector<vector<int>> efforts(m, vector<int>(n, INT_MAX));
-        priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq;
-        pq.emplace(0, 0);
-        while (!pq.empty()) {
-            const int effort = pq.top().first;
-            const int x = pq.top().second / 100, y = pq.top().second % 100;
-            pq.pop();
-            if (x == m - 1 && y == n - 1) return effort;
-            if (effort >= efforts[x][y]) continue;
-            efforts[x][y] = effort;
-            for (int i = 0; i < 4; ++i) {
-                const int nx = x + go[i][0], ny = y + go[i][1];
-                if (nx < 0 || nx >= m || ny < 0 || ny >= n) continue;
-                const int cur_effort = max(effort, abs(heights[x][y] - heights[nx][ny]));
-                pq.emplace(cur_effort, 100 * nx + ny);
+        vector<vector<bool>> vis(m, vector<bool>(n, false));
+        using S = tuple<int, int, int>;
+        priority_queue<S, vector<S>, greater<S>> q;
+        q.push({0, 0, 0});
+        while(!q.empty()) {
+            auto [c, i, j] = q.top(); q.pop();
+            if (vis[i][j]) continue;
+            vis[i][j] = true;
+            if (i == m - 1 && j == n - 1) return c;
+            for (int d = 0; d < 4; ++d) {
+                const int ni = i + go[d][0], nj = j + go[d][1];
+                if (ni < 0 || ni >= m || nj < 0 || nj >= n) continue;
+                if (vis[ni][nj]) continue;
+                int nc = max(c, abs(heights[i][j] - heights[ni][nj]));
+                q.push({nc, ni, nj});
             }
         }
         return -1;
