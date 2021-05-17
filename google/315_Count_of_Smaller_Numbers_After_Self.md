@@ -11,40 +11,28 @@ Space: O(N)
 
 class Solution {
 public:
-    void merge_sort(const vector<int>& nums, vector<int>& index, vector<int>& res, int l, int r) {
-        int count = r - l;
-        if (count > 1) {
-            int step = count / 2;
-            int m = l + step;
-            merge_sort(nums, index, res, l, m);
-            merge_sort(nums, index, res, m, r);
-            vector<int> tmp;
-            tmp.reserve(count);
-            int idx1 = l;
-            int idx2 = m;
-            int reverse_num = 0;
-            while(idx1 < m || idx2 < r) {
-                if (idx2 == r ||
-                    (idx1 < m && nums[index[idx1]] <= nums[index[idx2]])) {
-                    tmp.push_back(index[idx1]);
-                    res[index[idx1]] += reverse_num;
-                    idx1++;
-                } else {
-                    tmp.push_back(index[idx2]);
-                    reverse_num++;
-                    idx2++;
-                }
-            }
-            move(tmp.begin(), tmp.end(), index.begin()+l);
+    void merge_sort(const vector<int>& nums, int s, int t, vector<int>& res, vector<int>& index) {
+        if (t - s <= 1) return;
+        int m = s + (t - s) / 2;
+        merge_sort(nums, s, m, res, index);
+        merge_sort(nums, m, t, res, index);
+        vector<int> tmp;
+        tmp.reserve(t - s);
+        int j = m;
+        for (int i = s; i < m; ++i) {
+            while(j < t && nums[index[i]] > nums[index[j]]) 
+                tmp.push_back(index[j++]);
+            tmp.push_back(index[i]);
+            res[index[i]] += j - m;
         }
+        move(tmp.begin(), tmp.end(), index.begin()+s);
     }
     
     vector<int> countSmaller(vector<int>& nums) {
         const int n = nums.size();
-        vector<int> res(n, 0);
-        vector<int> index(n, 0);
+        vector<int> res(n, 0), index(n, 0);
         iota(index.begin(), index.end(), 0);
-        merge_sort(nums, index, res, 0, n);
+        merge_sort(nums, 0, n, res, index);
         return res;
     }
 };
