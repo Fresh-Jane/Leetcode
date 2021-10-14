@@ -22,10 +22,9 @@ public:
         }
         vector<string> res;
         res.reserve(k);
-        while (k) {
+        while (q.size()) {
             res.push_back(q.top()->first);
             q.pop();
-            k--;
         }
         reverse(res.begin(), res.end());
         return res;
