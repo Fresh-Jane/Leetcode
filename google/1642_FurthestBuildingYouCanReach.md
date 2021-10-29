@@ -3,6 +3,8 @@
 https://leetcode.com/problems/furthest-building-you-can-reach/
 
 ```
+// For the ladders can reach certain numbers of buildings, so we should use bricks to reach as many buildings as possible.
+// So we should find the min gap within buildings and see if it can be solved by bricks.
 class Solution {
 public:
     int furthestBuilding(vector<int>& heights, int bricks, int ladders) {
