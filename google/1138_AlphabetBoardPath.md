@@ -6,18 +6,16 @@ https://leetcode.com/problems/alphabet-board-path/
 class Solution {
 public:
     string alphabetBoardPath(string target) {
+        int prex = 0, prey = 0;
         string res;
-        int pre[2] = {0, 0}; 
-        for (int i = 0; i < target.size(); ++i) {
-            const int index = target[i] - 'a', row = index / 5, col = index % 5;
-            // The order of LDUR can't change, for this can handle 'z'.
-            if (col < pre[1]) res += string(pre[1] - col, 'L');
-            if (row > pre[0]) res += string(row - pre[0], 'D');
-            if (row < pre[0]) res += string(pre[0] - row, 'U');
-            if (col > pre[1]) res += string(col - pre[1], 'R');
-            pre[0] = row;
-            pre[1] = col;
+        for (const char c : target) {
+            int curx = (c - 'a') / 5, cury = (c - 'a') % 5;
+            if (cury < prey) res += string(prey - cury, 'L');
+            if (curx > prex) res += string(curx - prex, 'D'); 
+            if (curx < prex) res += string(prex - curx, 'U'); 
+            if (cury > prey) res += string(cury - prey, 'R');
             res += '!';
+            prex = curx; prey = cury;
         }
         return res;
     }
