@@ -11,9 +11,9 @@ public:
         istringstream s1(version1), s2(version2);
         while(1) {
             int n1, n2;
-            if (not(s1 >> n1)) n1 = 0;
-            if (not(s2 >> n2)) n2 = 0;
-            if (not s1 && not s2) return 0;
+            if (!(s1 >> n1)) n1 = 0;
+            if (!(s2 >> n2)) n2 = 0;
+            if (!s1 && !s2) return 0;
             if (n1 < n2) return -1;
             if (n2 < n1) return 1;
         }
