@@ -21,8 +21,8 @@ public:
         q.push(0);
         dp[0] = true;
         while (!q.empty()) {
-            const int size = q.size();
-            for (int i = 0; i < size; ++i) {
+            int size = q.size();
+            while(size) {
                 int cur = q.front();
                 q.pop();
                 if (cur == n - 1) return res;
@@ -31,6 +31,7 @@ public:
                     if (!dp[n_cur]) q.push(n_cur);
                 if (cur + 1 < n && !dp[cur+1]) q.push(cur+1);
                 if (cur - 1 >= 0 && !dp[cur-1]) q.push(cur-1);
+                size--;
             }
             res++;
         }
