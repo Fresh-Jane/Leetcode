@@ -7,8 +7,7 @@ https://leetcode.com/problems/4sum-ii/
 class Solution {
 public:
     int fourSumCount(vector<int>& nums1, vector<int>& nums2, vector<int>& nums3, vector<int>& nums4) {
-        vector<vector<int>> lists({nums1, nums2, nums3, nums4});
-        return kSumCount(lists);
+        return kSumCount({nums1, nums2, nums3, nums4});
     }
     int kSumCount(const vector<vector<int>>& lists) {
         unordered_map<int, int> m;
@@ -23,10 +22,8 @@ public:
                 addHash(lists, m, i + 1, sum + a);
     }
     int count(const vector<vector<int>>& lists, const unordered_map<int, int>& m, int i, int c) {
-        if (i == lists.size()) {
-            auto it = m.find(c);
-            return it == m.end() ? 0 : m.at(c);
-        }
+        if (i == lists.size()) 
+            return m.count(c) ? m.at(c) : 0;
         int cnt = 0;
         for (int a : lists[i]) 
             cnt += count(lists, m, i + 1, c - a);
