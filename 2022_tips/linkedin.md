@@ -29,6 +29,8 @@ reservoir sampling
 
 设计如何识别一个email domain是corporate的还是public的，比如google.com是corporate，gmail.com是public
 
+设计如何识别一个email domain是corporate的还是public的，比如google.com是corporate，gmail.com是public
+
 夹杂了一些概率统计题目，比如现场打字推导binomial distribution的MLE，又比如掷硬币连续两轮得到头的期待轮数
 
 3. https://www.1point3acres.com/bbs/thread-895659-1-1.html
@@ -37,12 +39,15 @@ reservoir sampling
 
 https://leetcode.com/problems/evaluate-reverse-polish-notation/ double格式
 
+https://leetcode.com/problems/evaluate-reverse-polish-notation/ double格式
 follow up: 1. handle exception 2. 需要支持一个新的符号-！，比如3！= 3 * 2 * 1 3. 如果过有几百个符号，怎么设计class
 我回答的思路就是种类太多，怎么manage，不同的client对符号的定义不一样。我不是写JAVA的，就瞎答的，说对每个符号定义interface，实现默认的方法。不同的client可以自己override，运行是inject进去。不一定对，但是面试官说make sense，我不确定
 
 4. https://www.1point3acres.com/bbs/thread-899992-1-1.html
 
 - coding:
+
+https://leetcode.com/problems/valid-number/
 
 https://leetcode.com/problems/valid-number/
 
@@ -65,6 +70,7 @@ https://leetcode.com/problems/max-points-on-a-line/
 - coding:
 
 https://leetcode.com/problems/minimum-window-substring/
+
 实现一个json parser。 剩下的自己clarify。 是个ood
 
 8. https://www.1point3acres.com/bbs/thread-898618-1-1.html
