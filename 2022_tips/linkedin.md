@@ -49,8 +49,6 @@ follow up: 1. handle exception 2. 需要支持一个新的符号-！，比如3�
 
 https://leetcode.com/problems/valid-number/
 
-https://leetcode.com/problems/valid-number/
-
 https://leetcode.com/problems/nested-list-weight-sum-ii/ explain why DFS use O(n) space complexity
 
 5. https://www.1point3acres.com/bbs/thread-899639-1-1.html
@@ -84,4 +82,14 @@ https://leetcode.com/problems/nested-list-weight-sum/
 https://leetcode.com/problems/nested-list-weight-sum-ii/
 
 9. https://www.1point3acres.com/bbs/thread-860606-1-1.html system design
+
+10. https://www.1point3acres.com/bbs/thread-901827-1-1.html
+
+https://leetcode.com/problems/max-area-of-island/
+
+https://leetcode.com/problems/longest-palindromic-subsequence/
+
+https://leetcode.com/problems/binary-tree-upside-down/
+
+https://leetcode.com/problems/max-stack/
 
