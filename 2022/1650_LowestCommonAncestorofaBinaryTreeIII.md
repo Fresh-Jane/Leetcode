@@ -31,6 +31,8 @@ public:
 };
 
 // Two Pointer
+// D(LCA) = A, D(P) = P, D(Q) = Q
+// Both of nodes traverse the path with distance (P + A + Q) and meet at LCA.
 class Solution {
 public:
     Node* lowestCommonAncestor(Node* p, Node * q) {
