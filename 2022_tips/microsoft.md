@@ -35,4 +35,8 @@ https://leetcode.com/problems/snapshot-array/
 
 4. https://www.1point3acres.com/bbs/thread-897786-1-1.html
 
+5. https://www.1point3acres.com/bbs/thread-903993-1-1.html
+
+https://leetcode.com/problems/kth-largest-element-in-an-array/
+
  
