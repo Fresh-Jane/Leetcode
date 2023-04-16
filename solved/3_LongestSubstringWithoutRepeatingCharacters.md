@@ -25,4 +25,24 @@ public:
         return max(res, r - l);
     }
 };
+
+class Solution {
+public:
+    int lengthOfLongestSubstring(string s) {
+        unordered_map<char, int> cnt;
+        int l = 0, r = 0;
+        const int n = s.size();
+        int res = 0;
+        while(r < n) {
+            cnt[s[r]]++;
+            while (cnt[s[r]] > 1 && l < r) {
+                cnt[s[l]]--;
+                l++;
+            }
+            res = max(res, r - l + 1);
+            r++;
+        }
+        return res;
+    }
+};
 ```

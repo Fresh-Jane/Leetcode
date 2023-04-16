@@ -49,7 +49,7 @@ public:
                 const int j = i+len-1;
                 if (len == 2) dp[i][j] = s[i] == s[j];
                 else dp[i][j] = (s[i] == s[j] && dp[i+1][j-1]);
-                if (dp[i][j]) {
+                if (dp[i][j] && len > max_len) {
                     max_len = len;
                     maxi = i;
                 }
