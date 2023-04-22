@@ -35,11 +35,11 @@ public:
     
     int shortest(string word1, string word2) {
         int res = INT_MAX;
-        vector<int> v2 = m[word2], v1 = m[word1];
+        const vector<int>& v2 = m[word2], v1 = m[word1];
         for (int i = 0, j = 0; i < v1.size() && j < v2.size();) {
             res = min(abs(v1[i] - v2[j]), res);
-            if (v1[i] < v2[j]) i++;
-            else j++;
+            if (v1[i] < v2[j]) ++i;
+            else ++j;
         }
         return res;
     }

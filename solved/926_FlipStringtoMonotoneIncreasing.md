@@ -14,8 +14,10 @@ public:
         int cnt_flip = 0, cnt_one = 0;
         for (char c : s) {
             if (c == '1') ++cnt_one;
-            else ++cnt_flip;
-            cnt_flip = min(cnt_flip, cnt_one);
+            else {
+              ++cnt_flip;
+              cnt_flip = min(cnt_flip, cnt_one);
+            }
         }
         return cnt_flip;
     }
