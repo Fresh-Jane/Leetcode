@@ -33,4 +33,36 @@ public:
         return dfs(maze, start, destination);
     }
 };
+
+// BFS
+class Solution {
+public:
+    bool hasPath(vector<vector<int>>& maze, vector<int>& start, vector<int>& destination) {
+        if (maze.empty()) return false;
+        const int m = maze.size(), n = maze[0].size();
+        vector<vector<bool>> visit(m, vector<bool>(n, false));
+        queue<vector<int>> q;
+        q.push(start);
+        visit[start[0]][start[1]] = true;
+        vector<int> go = {1, 0, -1, 0, 1};
+        while(!q.empty()) {
+            const vector<int> cur = q.front();  // should not use &
+            q.pop();
+            if (cur == destination) return true;
+            for (int i = 0; i < 4; ++i) {
+                int nx = cur[0] + go[i], ny = cur[1] + go[i+1];
+                while(nx >= 0 && nx < m && ny >= 0 && ny < n && maze[nx][ny] == 0) {
+                    nx += go[i];
+                    ny += go[i+1];
+                }
+                nx -= go[i];
+                ny -= go[i+1];
+                if (visit[nx][ny]) continue;
+                visit[nx][ny] = true;
+                q.push({nx, ny});
+            }
+        }
+        return false;
+    }
+};
 ```

@@ -24,8 +24,8 @@ public:
         while(!q.empty()) {
             int cur = q.front(); q.pop();
             bool can_create = true;
-            for (int i = 0; i < ingredients[cur].size(); ++i) 
-                if (!supply_set.count(ingredients[cur][i])) {
+            for (const string& in : ingredients[cur]) 
+                if (!supply_set.count(in)) {
                     can_create = false;
                     break;
                 }
