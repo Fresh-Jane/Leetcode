@@ -18,7 +18,7 @@ public:
     ListNode* sortList(ListNode* head) {
         if (!head || !head->next) return head;
         ListNode *fast = head, *slow = head;
-        while(fast->next && fast->next->next) {
+        while(fast->next && fast->next->next) { // important
             fast = fast->next->next;
             slow = slow->next;
         }
