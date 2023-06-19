@@ -3,6 +3,43 @@
 https://leetcode.com/problems/race-car/
 
 ```
+// BFS with simple stl
+class Solution {
+public:
+    int racecar(int target) {
+        if (target == 0) return 0;
+        unordered_map<int, unordered_set<int>> visit;
+        queue<pair<int, int>> q;
+        q.push({0, 1});
+        int level = 0;
+        while(!q.empty()) {
+            int len = q.size();
+            while(len--) {
+                auto [pos, speed] = q.front(); q.pop();
+                // A
+                int ap = pos + speed;
+                int as = speed * 2;
+                if (ap == target) return level + 1;
+                if (ap > 0 && ap < target * 2 &&
+                    (!visit.count(ap) || !(visit.at(ap).count(as)))) {
+                    q.push({ap, as});
+                    visit[ap].insert(as);
+                }
+                // R
+                int rp = pos;
+                int rs = speed > 0 ? -1 : 1;
+                if (rp > 0 && rp < target * 2 &&
+                    (!visit.count(rp) || !(visit.at(rp).count(rs)))) {
+                    q.push({rp, rs});
+                    visit[rp].insert(rs);
+                }
+            }
+            level++;
+        }
+        return -1;
+    }
+};
+
 // BFS
 class Solution {
 public:
