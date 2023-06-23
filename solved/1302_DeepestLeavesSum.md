@@ -19,17 +19,15 @@ public:
     int deepestLeavesSum(TreeNode* root) {
         queue<TreeNode*> q;
         q.push(root);
-        int sum = 0, len = 0;
+        int sum = 0;
         while(!q.empty()) {
-            len = q.size();
+            int len = q.size();
             sum = 0;
-            while(len) {
-                TreeNode* cur = q.front();
+            while(len--) {
+                TreeNode* cur = q.front(); q.pop();
                 sum += cur->val;
-                q.pop();
                 if (cur->left) q.push(cur->left);
                 if (cur->right) q.push(cur->right);
-                len--;
             }
         }
         return sum;
