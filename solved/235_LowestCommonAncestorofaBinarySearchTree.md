@@ -36,7 +36,7 @@ public:
             else if (pv > cv && qv > cv) root = root->right;
             else return root;
         }
-        return root;
+        return nullptr;
     }
 };
 ```
