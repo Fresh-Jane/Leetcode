@@ -25,6 +25,31 @@ private:
     unordered_map<string, map<int, string>> m;
 };
 
+// Use vector to implement
+class TimeMap {
+public:
+    TimeMap() {}
+    
+    void set(string key, string value, int timestamp) {
+        m[key].push_back({timestamp, value});
+    }
+    
+    string get(string key, int timestamp) {
+        if (!m.count(key)) return "";
+        const vector<pair<int, string>>& vset = m.at(key);
+        int l = 0, r = vset.size() - 1;
+        while(l <= r) {
+            int m = l + (r - l) / 2;
+            if (vset[m].first < timestamp) l = m + 1;
+            else r = m - 1;
+        }
+        if (l < vset.size() && vset[l].first == timestamp) return vset[l].second;
+        return l == 0 ? "" : vset[l-1].second; 
+    }
+private:
+    unordered_map<string, vector<pair<int, string>>> m;
+};
+
 /**
  * Your TimeMap object will be instantiated and called as such:
  * TimeMap* obj = new TimeMap();
