@@ -5,6 +5,42 @@ https://leetcode.com/problems/print-foobar-alternately/description/
 ```
 // https://leetcode.com/problems/print-foobar-alternately/solutions/2392439/c-c-3-ways-to-solve-atomic-mutex-semaphore/
 
+// use condition_variable
+class FooBar {
+private:
+    int n;
+    condition_variable cv;
+    mutex m;
+    bool t_value = false;
+public:
+    FooBar(int n) {
+        this->n = n;
+    }
+
+    void foo(function<void()> printFoo) {
+        for (int i = 0; i < n; i++) {
+            unique_lock<mutex> lock(m);
+            cv.wait(lock,[this](){ return t_value == false; });
+            cv.notify_one();
+            t_value = true;
+        	// printFoo() outputs "foo". Do not change or remove this line.
+        	printFoo();
+        }
+    }
+
+    void bar(function<void()> printBar) {
+        for (int i = 0; i < n; i++) {
+            unique_lock<mutex> lock(m);
+            cv.wait(lock,[this](){ return t_value == true; });
+            cv.notify_one();
+            t_value = false;
+        	// printBar() outputs "bar". Do not change or remove this line.
+        	printBar();
+        }
+    }
+};
+
+
 // Use atomic
 class FooBar {
 private:

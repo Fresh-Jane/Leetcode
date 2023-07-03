@@ -26,7 +26,7 @@ public:
     bool can(vector<int>& piles, int k, int h) {
         if (k == 0) return false;
         for (int p : piles) {
-            h -= (p-1)/k+1;
+            h -= (p-1)/k+1;  // Can remember
             if (h < 0) return false;
         }
         return true;

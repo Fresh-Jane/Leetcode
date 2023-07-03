@@ -35,6 +35,44 @@ public:
     }
 };
 
+// Use condition_variable
+class Foo {
+private:
+    condition_variable cv;
+    mutex m;
+    int index = 1;
+public:
+    Foo() {
+    }
+
+    void first(function<void()> printFirst) {
+        unique_lock<mutex> lock(m);
+        cv.wait(lock, [this](){ return index == 1; });
+        cv.notify_all();
+        index = 2;
+        // printFirst() outputs "first". Do not change or remove this line.
+        printFirst();
+    }
+
+    void second(function<void()> printSecond) {
+        unique_lock<mutex> lock(m);
+        cv.wait(lock, [this](){ return index == 2; });
+        cv.notify_all();
+        index = 3;
+        // printSecond() outputs "second". Do not change or remove this line.
+        printSecond();
+    }
+
+    void third(function<void()> printThird) {
+        unique_lock<mutex> lock(m);
+        cv.wait(lock, [this](){ return index == 3; });
+        cv.notify_all();
+        index = 1;        
+        // printThird() outputs "third". Do not change or remove this line.
+        printThird();
+    }
+};
+
 // Use atomic
 class Foo {
 private:

@@ -3,6 +3,25 @@
 https://leetcode.com/problems/find-the-duplicate-number/
 
 ```
+// Time: O(N), Space: O(1)
+// Linkedlist cycle 
+class Solution {
+public:
+    int findDuplicate(vector<int>& nums) {
+        int slow = nums[0], fast = nums[0];
+        do {
+            slow = nums[slow];
+            fast = nums[nums[fast]];
+        } while (slow != fast);
+        fast = nums[0];
+        while (slow != fast) {
+            slow = nums[slow];
+            fast = nums[fast];
+        }
+        return slow;
+    }
+};
+
 // The count of elements with val in the range of [1, res] should > res, we set it as count_a. If the count_a < res, then count_b = n+1-count_a > n+1-res.
 // We could get that goal without duplicate the elements from (res, n].  
 class Solution {

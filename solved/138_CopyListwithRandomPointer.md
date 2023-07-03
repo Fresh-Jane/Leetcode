@@ -45,6 +45,34 @@ public:
     }
 };
 
+// hashmap
+class Solution {
+public:
+    Node* copyRandomList(Node* head) {
+        unordered_map<Node*, Node*> m;
+        Node dummy(0);
+        Node* pre = &dummy;
+        Node* cur = head;
+        while(cur) {
+            Node* new_node = new Node(cur->val);
+            pre->next = new_node;
+            m[cur] = new_node;
+            cur = cur->next;
+            pre = new_node;
+        }
+        cur = head;
+        pre = dummy.next;
+        while(cur) {
+            if (cur->random) {
+                pre->random = m[cur->random];
+            }
+            cur = cur->next;
+            pre = pre->next;
+        }
+        return dummy.next;
+    }
+};
+
 // Hashmap + DFS
 // Space: O(N)
 class Solution {

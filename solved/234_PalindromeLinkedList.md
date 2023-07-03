@@ -13,7 +13,38 @@ https://leetcode.com/problems/palindrome-linked-list/
  *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
-// Solution 1: Recursive
+// Solution 1:
+// Time: O(N), Space: O(1)
+class Solution {
+public:
+    bool isPalindrome(ListNode* head) {
+        ListNode* slow = head, *fast = head;
+        while(fast && fast->next) {
+            slow = slow->next;
+            fast = fast->next->next;
+        }
+        if (fast && !fast->next) slow = slow->next; // If the total number of node is odd
+
+        ListNode* pre = nullptr;
+        while(slow) {
+            ListNode* tmp = slow->next;
+            slow->next = pre;
+            pre = slow;
+            slow = tmp;
+        }
+
+        while(head && pre) {
+            if (head->val != pre->val) return false;
+            head = head->next;
+            pre = pre->next;
+        }
+
+        return true;
+    }
+};
+
+// Solution 2: 
+// Time: O(N), Space: O(1)
 class Solution {
 public:
     bool isPalindrome(ListNode* head) {
@@ -41,7 +72,8 @@ public:
     }
 };
 
-// Solution 2: Iterative
+// Solution 3: 
+// Time: O(N), Space: O(N)
 class Solution {
 public:
     bool isPalindrome(ListNode* head) {
