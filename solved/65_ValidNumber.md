@@ -4,6 +4,7 @@ https://leetcode.com/problems/valid-number/
 
 ```
 // https://leetcode.com/problems/valid-number/solution/
+// Check all invalid situations
 class Solution {
 public:
     bool isNumber(string s) {

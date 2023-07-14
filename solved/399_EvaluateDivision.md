@@ -58,4 +58,41 @@ public:
         return res;
     }
 };
+
+// DFS
+class Solution {
+private:
+    unordered_map<string, vector<pair<string, double>>> m;
+public:
+    vector<double> calcEquation(vector<vector<string>>& equations, vector<double>& values, vector<vector<string>>& queries) {
+        const int n = equations.size();
+        for (int i = 0; i < n; ++i) {
+            const string a = equations[i][0], b = equations[i][1];
+            m[a].push_back({b, values[i]});
+            m[b].push_back({a, 1.0 / values[i]});
+        }
+        vector<double> res;
+        unordered_set<string> visited;
+        for (const vector<string>& q : queries) {
+            const string c = q[0], d = q[1];
+            double r = 1.0;
+            if (!m.count(c) || !m.count(d) || !dfs(c, d, visited, r)) res.push_back(-1.0);
+            else res.push_back(r);
+        }
+        return res;
+    }
+    bool dfs(const string& start, const string& end, unordered_set<string> visited, double& res) {
+        if (start == end) return true;
+        const vector<pair<string, double>>& all_next = m.at(start);
+        visited.insert(start);
+        for (const auto& p : all_next) {
+            if (!visited.count(p.first)) {
+                res *= p.second;
+                if (dfs(p.first, end, visited, res)) return true;
+                res /= p.second;
+            }
+        }
+        return false;
+    }
+};
 ```
